@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( mask_from_label )
+find_package( OpenCV REQUIRED )
+add_executable( mask_from_label mask_from_label.cpp )
+target_link_libraries( mask_from_label ${OpenCV_LIBS} )
