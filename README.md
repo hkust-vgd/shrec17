@@ -8,7 +8,7 @@ In this dataset, we manually group 1667 SceneNN objects and 3308 ShapeNet models
 ![Object distribution in the dataset](images/objectDistribution.png?raw=true)
 
 By following the idea in the ShapeNet dataset, we split our dataset into training, validation, and test set. The split ratio is 50/25/25%. 
-The training and validation data could be downloaded [here](https://drive.google.com/drive/folders/0B2BQi-ql8CzeOTZaa2Fvem5xb2s). 
+All data could be downloaded [here](https://drive.google.com/drive/folders/0B2BQi-ql8CzeOTZaa2Fvem5xb2s). 
 
 The objects in both SceneNN and ShapeNet are grouped into categories and subcategories, which are stored in CSV files. All categories and subcategories for training and validation are provided in `train.csv` and `validation.csv`. The `test.csv` has categories removed for evaluation purposes. In general, we will first consider categories in the evaluation. The subcategories could be used for more rigorous evaluation after using categories.
 
@@ -19,7 +19,7 @@ Each SceneNN object has an ID formatted as `<sceneID>_<labelID>`, where `sceneID
 
 It is perhaps more convenient to work with the 3D data as they are more compact and manageable. For researchers who are interested in the 2.5D color and depth frames, you can: 
 
-+ Download item (a), (b), and (c) in the SceneNN scene repository [here](https://drive.google.com/drive/folders/0B-aa7y5Ox4eZWE8yMkRkNkU4Tk0?usp=sharing). All images for each scene are packed in an ONI video file, which can be extracted using the [`playback`](https://github.com/scenenn/scenenn/tree/master/playback) tool. Note that to do so, a free space about 500 GB is preferred.
++ Download item (a), (b), and (c) in the SceneNN scene repository [here](https://drive.google.com/drive/folders/0B-aa7y5Ox4eZWE8yMkRkNkU4Tk0?usp=sharing). All images for each scene are packed in an ONI video file, which can be extracted using the `playback` tool [here](https://github.com/scenenn/scenenn/tree/master/playback). Note that to store images for all scenes, a hard drive with free space about 500 GB is preferred.
 
 + Download the labels in item (d) [here](https://drive.google.com/drive/folders/0B2BQi-ql8CzeaDNQQXNmZHdnSFE). To extract a binary mask for each object, use the (`mask_from_label`) code  [here](https://github.com/scenenn/shrec17/tree/master/mask_from_label).
  
