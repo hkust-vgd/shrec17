@@ -5,12 +5,12 @@ In this track, our goal is to retrieve a CAD model from ShapeNet using a SceneNN
 
 # Download
 
-* [3D models](https://drive.google.com/drive/folders/0B2BQi-ql8CzeOTZaa2Fvem5xb2s)
+* [3D models](https://drive.google.com/drive/folders/0B2BQi-ql8CzeOTZaa2Fvem5xb2s) (4 GB)
 * [Data viewer](https://github.com/scenenn/shrec17/releases)
 * [Labels](https://drive.google.com/drive/folders/0B2BQi-ql8CzeaDNQQXNmZHdnSFE)
- (optional)
+ (optional, 8 GB)
 * [Mask from label code](https://github.com/scenenn/shrec17/tree/master/mask_from_label) (optional)
-* [RGB-D video and trajectory](https://drive.google.com/drive/folders/0B-aa7y5Ox4eZWE8yMkRkNkU4Tk0?usp=sharing) (optional)
+* [RGB-D video and trajectory](https://drive.google.com/drive/folders/0B-aa7y5Ox4eZUmhJdmlYc3BQSG8) (optional, 120 GB)
 * [ONI playback tool](https://github.com/scenenn/scenenn/tree/master/playback)
  (optional)
 
