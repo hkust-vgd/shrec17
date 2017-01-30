@@ -3,6 +3,17 @@
 This repository contains detailed description of the dataset and supplemental code for [SHREC 2017 track: RGB-D Object-to-CAD Retrieval](http://people.sutd.edu.sg/~saikit/projects/sceneNN/shrec17/index.html).
 In this track, our goal is to retrieve a CAD model from ShapeNet using a SceneNN model as input.
 
+# Download
+
+* [3D models]((https://drive.google.com/drive/folders/0B2BQi-ql8CzeOTZaa2Fvem5xb2s)
+* [Data viewer](https://github.com/scenenn/shrec17/releases)
+* [Labels](https://drive.google.com/drive/folders/0B2BQi-ql8CzeaDNQQXNmZHdnSFE)
+(optional)
+* [Mask from label code](https://github.com/scenenn/shrec17/tree/master/mask_from_label)
+* [RGB-D video and trajectory](https://drive.google.com/drive/folders/0B-aa7y5Ox4eZWE8yMkRkNkU4Tk0?usp=sharing) (optional)
+* [ONI playback tool](https://github.com/scenenn/scenenn/tree/master/playback)
+
+# Dataset 
 In this dataset, we manually group 1667 SceneNN objects and 3308 ShapeNet models into 20 categories. Only indoor objects that are both available in SceneNN and Shapenet dataset are selected. The object distribution in this dataset are shown below.
 
 ![Object distribution in the dataset](images/objectDistribution.png?raw=true)
@@ -27,7 +38,11 @@ It is perhaps more convenient to work with the 3D data as they are more compact 
 Each ShapeNet object is stored in 3D as a triangle mesh in OBJ format, with color in a separate material file in MTL format, and (optional) textures. The ShapeNet objects are a subset of ShapeNetSem. All object IDs are the same as those in the original ShapeNet dataset. 
 
 ## Tools
-To assist dataset investigation, we provide a model viewer tool (Windows only) which can display SceneNN and ShapeNet objects in categories (coming soon). 
+To assist dataset investigation, we provide a model viewer tool (Windows 64-bit only) which can display SceneNN and ShapeNet objects in categories:
+
+![Dataset viewer](images/viewer.png?raw=true)
+
+Please download the viewer [here](https://github.com/scenenn/shrec17/releases).
 
 ## Acknowledgement
 The CAD models in this dataset are extracted from [ShapeNet](https://www.shapenet.org/), a richly annotated and large-scale dataset of 3D shapes by Stanford. 
