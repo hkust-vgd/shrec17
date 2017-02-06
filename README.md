@@ -39,9 +39,10 @@ It is perhaps more convenient to work with the 3D data as they are more compact 
 Each ShapeNet object is stored in 3D as a triangle mesh in OBJ format, with color in a separate material file in MTL format, and (optional) textures. The ShapeNet objects are a subset of ShapeNetSem. All object IDs are the same as those in the original ShapeNet dataset.
 
 # Evaluation
-We provide Python evaluation scripts for all of the metrics. You can find an example retrieval results in the folder.
+We provide Python evaluation scripts for all of the metrics. You can find an example retrieval results in the folder. Please check out this reprository regularly for more updates. All bug reports and suggestion are welcomed.
 
 Usage:
+
 ```python eval.py examples/```
 
 ## Tools
