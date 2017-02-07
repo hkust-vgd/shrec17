@@ -2,6 +2,9 @@ from __future__ import division
 import math
 import numpy as np
 
+# More details about evaluation metrics can be found here
+# https://arxiv.org/pdf/1105.3685.pdf
+
 
 def precision(x):
     return np.count_nonzero(x) / len(x)
