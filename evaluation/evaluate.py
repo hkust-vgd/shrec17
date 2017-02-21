@@ -6,6 +6,7 @@ import csv
 import os
 from metrics import precision, recall, f1score, ndcg, average_precision, nnt1, nnt2
 import numpy
+import matplotlib.pyplot as plt
 
 
 def read_dataset(filename):
@@ -27,15 +28,22 @@ def load_result(path, filename, queries, targets):
     q = queries[filename]
     with open(fullpath, 'rb') as fin:
         for line in fin.readlines()[:cutoff]:
-            if line.strip(): # line is not empty
+            if line.strip() and not line.startswith('#'): # line is not empty
                 retrieved, distance = line.split()
-                r.append(targets[retrieved])
+                try:
+                    r.append(targets[retrieved])
+                except KeyError:
+                    continue
     return q, r
 
 
 def load_results(path, queries, targets):
     results = []
     for filename in os.listdir(path):
+        try:
+            q = queries[filename]
+        except KeyError:
+            continue
         q, r = load_result(path, filename, queries, targets)
         results.append((q, r))
     return results
@@ -75,7 +83,7 @@ def evaluate(path):
     nnt1s = []
     nnt2s = []
     for (queried, retrieved) in results:
-        x = categories_to_rel(queried, retrieved)[:cutoff]
+        x = categories_to_rel(queried, retrieved)[:freqs[queried[0]]]
         p = precision(x)
         r = recall(x, freqs[queried[0]])
         f = f1score(x, freqs[queried[0]])
@@ -90,12 +98,35 @@ def evaluate(path):
         aps.append(ap)
         nnt1s.append(t1)
         nnt2s.append(t2)
-        print('precision:', p)
-        print('recall:', r)
-        print('F1 score:', f)
-        print('average precision:', ap)
-        print('NDCG:', g)
-        print('nearest neighbor:', t1, t2)
+    print('mean precision:', numpy.mean(precisions))
+    print('mean recall:', numpy.mean(recalls))
+    print('mean F1 score:', numpy.mean(f1scores))
+    print('mAP:', numpy.mean(aps))
+    print('mean NDCG:', numpy.mean(gains))
+    print('mean nearest neighbor:', numpy.mean(nnt1s), numpy.mean(nnt2s))
+
+    # plot precision-recall curve
+    mean_precisions = numpy.zeros(cutoff, numpy.float64)
+    mean_recalls = numpy.zeros(cutoff, numpy.float64)
+    for (queried, retrieved) in results:
+        x = categories_to_rel(queried, retrieved)[:cutoff]
+        x = numpy.pad(x, (0, cutoff - len(x)), 'constant', constant_values=(0))
+        precisions = []
+        recalls = []
+        for k, _ in enumerate(x):
+            p = precision(x[:k+1])
+            r = recall(x[:k+1], freqs[queried[0]])
+            precisions.append(p)
+            recalls.append(r)
+        mean_precisions += precisions
+        mean_recalls += recalls
+    mean_precisions /= len(results)
+    mean_recalls /= len(results)
+    plt.plot(mean_recalls, mean_precisions)
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
+    plt.axis([0, 1, 0, 1.05])
+    plt.show()
 
 
 if __name__ == '__main__':

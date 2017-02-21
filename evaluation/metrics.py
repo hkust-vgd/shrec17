@@ -29,8 +29,8 @@ def average_precision(x, freq):
     for k, _ in enumerate(x):
         if x[k]:
             tp += 1
-            ap += (tp / (k + 1)) * dr
-    return ap
+            ap += (tp / (k + 1))
+    return ap * dr
 
 
 def dcg(x):
@@ -57,4 +57,5 @@ def nnt1(x, k):
 
 
 def nnt2(x, k):
-    return np.count_nonzero(x[:k*2]) / (k*2)
+    k2 = min(len(x), k*2)
+    return np.count_nonzero(x[:k2]) / (k2)
