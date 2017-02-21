@@ -83,7 +83,7 @@ def evaluate(path):
     nnt1s = []
     nnt2s = []
     for (queried, retrieved) in results:
-        x = categories_to_rel(queried, retrieved)[:freqs[queried[0]]]
+        x = categories_to_rel(queried, retrieved)[:cutoff]
         p = precision(x)
         r = recall(x, freqs[queried[0]])
         f = f1score(x, freqs[queried[0]])
